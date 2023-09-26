@@ -1,113 +1,90 @@
-import Image from 'next/image'
+"use client"
 
-export default function Home() {
+import { ChevronLeftIcon } from "@heroicons/react/20/solid"
+import axios from "axios";
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react";
+
+export default function Login() {
+    const SEVER_URL = 'http://localhost:9999/'; // 임시로 만듬
+    const [login, setlogin] = useState<any[]>([]);
+    const fetchData = async () => {
+        try {
+        const response = await axios.get(SEVER_URL + 'login');
+        setlogin(response.data);
+        } catch (error) {
+        console.error('Error fetching data :', error);
+        }
+    };
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+  // 서버 값 보내는 onRegisterHandler 함수
+    const onLoginHandler = async (e:any) => {
+        e.preventDefault();
+        const id = e.target.id.value;
+        const password = e.target.password.value;
+        try {
+        await axios.post(SEVER_URL + 'login', {id, password});
+        fetchData();
+            console.log(id, password);
+        } catch(error) {
+            console.error('Error register data :', error);
+        }
+    };
+    const router = useRouter();
+
+    const RegisterToGo = (e:any) => {
+        e.preventDefault()
+        router.push('/register')
+    };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+      <div className="flex flex-col h-screen items-center justify-center">
+          <div className="flex">
+              {/* Reigster Form */}
+              <div className="flex-1 p-8 mr-20 mb-20 mt-20">
+                  <div>
+                      <p className="font-bold mb-20 text-3xl">Login</p>
+                      <form onSubmit={onLoginHandler}>
+                            <div className="mb-4">
+                              <p className="font-medium ml-4 text-lg">ID</p>
+                              <input name="id" className="border bg-input-color-1 shadow-inner w-full py-2 px-3 h-12 focus:bg-white focus:border-main-color focus:outline-none rounded" />
+                          </div>
+                          <div className="mb-4">
+                              <p className="font-medium ml-4 text-lg">Password</p>
+                              <input name="password" type="password" className="border bg-input-color-1 shadow-inner w-full py-2 px-3 h-12 focus:bg-white focus:border-main-color focus:outline-none rounded" />
+                          </div>
+                            <div className="mt-20 flex justify-between">
+                                <button onClick={RegisterToGo} className="hover:underline font-regular flex items-center"><ChevronLeftIcon className="h-6 w-6"/>Register</button>
+                                <button type="submit" className="bg-main-color text-white font-medium py-2 px-4 hover:bg-input-hover-color rounded">confirm</button>
+                            </div>
+                      </form>
+                  </div>
+              </div>
+              {/* Instructions */}
+              <div className="flex-1 p-8 mt-8">
+                  <div className="bg-input-color-1 rounded">
+                      <div>
+                          <div style={{ padding: '1rem' }}>
+                              <p className="font-bold text-3xl">Instructions</p>
+                              <ul className="list-disc list-inside font-regular mt-4">
+                                  <li style={{padding: '1rem'}}>The service we are currently providing is for students at Berkeley University in California, USA.</li>
+                                  <li className="mt-4" style={{padding: '1rem'}}>The service currently being provided is in the beta testing stage, and a full version will be released later.</li>
+                                  <li className="mt-4" style={{padding: '1rem'}}>Login provides Toucan's own DB and proves security.</li>
+                                  <li className="mt-4" style={{padding: '1rem'}}>The services currently provided are timetables and bulletin boards, and we plan to provide more services in the future.</li>
+                                  <li className="mt-4" style={{padding: '1rem'}}>All these services are provided by Toucan.</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {/* 하단 텍스트 */}
+          <div className="text-center mb-4">
+              <p className="font-light text-xs">© 2023. <span className="font-medium">TOUCAN</span> Co. all rights reserved.</p>
+          </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
   )
 }

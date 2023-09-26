@@ -1,0 +1,53 @@
+{
+  "register": [
+    {
+      "name": "doyoung",
+      "email": "kdy",
+      "password": "kim",
+      "id": 1
+    },
+    {
+      "nickname": "도팔",
+      "email": "ehdud9883@naver.com",
+      "id": "kdy9883",
+      "password": "kimdoyoung"
+    }
+  ],
+
+  
+  "login": [
+    {
+      "email": "asd",
+      "password": "asd",
+      "id": 1
+    },
+    {
+      "email": "df",
+      "password": "df",
+      "id": 2
+    },
+    {
+      "id": "kdy9883",
+      "password": "kimdoyoung"
+    }
+  ],
+
+
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
