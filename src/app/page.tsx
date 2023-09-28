@@ -67,12 +67,12 @@ export default function Login() {
               <div className="flex-1 p-8 mt-8">
                   <div className="bg-input-color-1 rounded">
                       <div>
-                          <div style={{ padding: '1rem' }}>
+                          <div style={{ padding: "1rem"}}>
                               <p className="font-bold text-3xl">Instructions</p>
                               <ul className="list-disc list-inside font-regular mt-4">
-                                  <li style={{padding: '1rem'}}>The service we are currently providing is for students at Berkeley University in California, USA.</li>
-                                  <li className="mt-4" style={{padding: '1rem'}}>The service currently being provided is in the beta testing stage, and a full version will be released later.</li>
-                                  <li className="mt-4" style={{padding: '1rem'}}>Login provides Toucan's own DB and proves security.</li>
+                                  <li style={{padding: "1rem"}}>The service we are currently providing is for students at Berkeley University in California, USA.</li>
+                                  <li className="mt-4" style={{padding: "1rem"}}>The service currently being provided is in the beta testing stage, and a full version will be released later.</li>
+                                  <li className="mt-4" style={{padding: '1rem'}}>Login provides Toucan&apos;s own DB and proves security.</li>
                                   <li className="mt-4" style={{padding: '1rem'}}>The services currently provided are timetables and bulletin boards, and we plan to provide more services in the future.</li>
                                   <li className="mt-4" style={{padding: '1rem'}}>All these services are provided by Toucan.</li>
                               </ul>
