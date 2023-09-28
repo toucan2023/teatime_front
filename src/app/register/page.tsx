@@ -81,7 +81,7 @@ export default function Register() {
                                 <ul className="list-disc list-inside font-regular mt-4">
                                     <li style={{padding: '1rem'}}>The service we are currently providing is for students at Berkeley University in California, USA.</li>
                                     <li className="mt-4" style={{padding: '1rem'}}>The service currently being provided is in the beta testing stage, and a full version will be released later.</li>
-                                    <li className="mt-4" style={{padding: '1rem'}}>Login provides Toucan's own DB and proves security.</li>
+                                    <li className="mt-4" style={{padding: '1rem'}}>Login provides Toucan&apos;s own DB and proves security.</li>
                                     <li className="mt-4" style={{padding: '1rem'}}>The services currently provided are timetables and bulletin boards, and we plan to provide more services in the future.</li>
                                     <li className="mt-4" style={{padding: '1rem'}}>All these services are provided by Toucan.</li>
                                 </ul>
