@@ -32,6 +32,39 @@
     }
   ],
 
+  "course": [
+    {
+      "id": 1,
+      "courseName": "수학",
+      "courseRoom": "A101",
+      "professorName": "홍길동",
+      "type": "강의",
+      "grade": 1,
+      "time": "월요일 10:00 - 12:00",
+      "credits": 3
+    },
+    {
+      "id": 2,
+      "courseName": "영어",
+      "courseRoom": "B201",
+      "professorName": "이영희",
+      "type": "강의",
+      "grade": 2,
+      "time": "화요일 14:00 - 16:00",
+      "credits": 3
+    },
+    {
+      "id": 3,
+      "courseName": "과학",
+      "courseRoom": "C301",
+      "professorName": "김철수",
+      "type": "실험",
+      "grade": 3,
+      "time": "수요일 09:00 - 12:00",
+      "credits": 4
+    }
+  ],
+
 
   "posts": [
     {

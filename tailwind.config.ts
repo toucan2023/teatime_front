@@ -1,6 +1,5 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -22,7 +21,8 @@ const config: Config = {
           2: 'F3F4F6',
         },
         'input-hover-color': '#122763',
-        'main-color': '#1E3A8A'
+        'main-color': '#1E3A8A',
+        'main-page-color': '#6366F1'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -33,4 +33,4 @@ const config: Config = {
   },
   plugins: [],
 }
-export default config
+

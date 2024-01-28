@@ -1,0 +1,16 @@
+{
+    "firestore": {
+        "rules": {
+            ".read": "auth != null",
+            ".write": "auth != null",
+            "your_collection_name": {
+                ".indexOn": [
+                    "courseListData"
+                ],
+                "$documentId": {
+                    ".validate": "newData.child('userId').val() === auth.uid"
+                }
+            }
+        }
+    }
+}
